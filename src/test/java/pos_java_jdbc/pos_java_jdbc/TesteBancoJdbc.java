@@ -1,5 +1,7 @@
 package pos_java_jdbc.pos_java_jdbc;
 
+import java.util.List;
+
 import org.junit.jupiter.api.Test;
 
 import conexaojdbc.SingleConnection;
@@ -20,5 +22,40 @@ public class TesteBancoJdbc {
 		userPosJava.setEmail("maria@gamil.com");
 		
 		userPosDAO.salvar(userPosJava);
+	}
+	
+	@Test
+	public void initListar() {
+		UserPosDAO userPosDAO = new UserPosDAO();
+		
+		try {
+			List<UserPosJava> listar = userPosDAO.listar();
+			
+			for (UserPosJava userPosJava : listar) {
+				System.out.println(userPosJava);
+				System.out.println("--------------------------------------------------------");
+			}
+			
+		} catch (Exception e) {
+			
+			e.printStackTrace();
+		}
+		
+	}
+	
+	@Test
+	public void initBuscar() {
+		UserPosDAO userPosDAO = new UserPosDAO();
+		
+		try {
+			UserPosJava userPosJava = userPosDAO.buscar(6L);
+			
+					System.out.println(userPosJava);
+			
+		} catch (Exception e) {
+			
+			e.printStackTrace();
+		}
+		
 	}
 }
