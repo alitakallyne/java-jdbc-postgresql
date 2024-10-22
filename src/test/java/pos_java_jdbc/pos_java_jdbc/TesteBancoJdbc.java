@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 
 import conexaojdbc.SingleConnection;
 import dao.UserPosDAO;
+import model.BeanUserFone;
 import model.Telefone;
 import model.UserPosJava;
 
@@ -103,4 +104,34 @@ public class TesteBancoJdbc {
 		UserPosDAO dao = new UserPosDAO();
 		dao.salvarTelefone(telefone);
 	}
+	
+	@Test
+	public void testeCarregaFonesUser() {
+
+
+		UserPosDAO dao = new UserPosDAO();
+
+
+		List<BeanUserFone> beanUserFones = dao.listaUserFone(16L);
+
+
+		for (BeanUserFone beanUserFone : beanUserFones) {
+			System.out.println(beanUserFone);
+			System.out.println("---------------------------------------------");
+		}
+
+
+	}
+
+
+	@Test
+	public void testeDeleteUserFone() {
+
+
+		UserPosDAO dao = new UserPosDAO();
+		dao.deleteFonesPorUser(15L);
+
+
+	}
+
 }
